@@ -33,9 +33,18 @@ public partial class NewPage1 : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        await PassCategory("general");
+
+       
+    }
+
+    public async Task PassCategory (string categoryName)
+    {
+        CvNews.ItemsSource = null;
+        ArticlesList.Clear();
         // Fetch the news articles when the page appears
         ApiService apiService = new ApiService();
-        var newsResult = await apiService.GetNews();
+        var newsResult = await apiService.GetNews(categoryName);
         foreach (var item in newsResult.Articles)
         {
             ArticlesList.Add(item);
@@ -44,4 +53,16 @@ public partial class NewPage1 : ContentPage
         CvNews.ItemsSource = ArticlesList;
     }
 
+    private async void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+       var selectedItem = e.CurrentSelection.FirstOrDefault() as Category;
+        await PassCategory(selectedItem.Name);
+    }
+
+    private void CvNews_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+       var SelectedItem = e.CurrentSelection.FirstOrDefault() as Article;
+
+        Navigation.PushAsync(new NewsDetailPage(SelectedItem));
+    }
 }

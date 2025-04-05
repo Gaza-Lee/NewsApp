@@ -8,7 +8,7 @@ namespace NewsApp
         {
             InitializeComponent();
 
-            MainPage = new NewPage1();
+            MainPage = new NavigationPage(new NewPage1());
         }
     }
 }

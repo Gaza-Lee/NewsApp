@@ -2,18 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Pages.NewPage1"
-             Title="NewPage1">
+             Title="NewPage1"
+             NavigationPage.HasNavigationBar="False">
+    
     <Grid RowDefinitions="Auto, Auto, *">
         <Label Grid.Row="0"
                Text="News 24"
                FontSize="Title"
                HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+               VerticalOptions="Center"
+               Margin="0"
+               Padding="152,0"
+               BackgroundColor="DarkBlue"
+               TextColor="White"/>
         
         
         <CollectionView Grid.Row="1"
                         x:Name="CvCategories"
-                        HeightRequest="60">
+                        HeightRequest="60"
+                        SelectionMode="Single"
+                        SelectionChanged="CvCategories_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
             </CollectionView.ItemsLayout>
@@ -21,14 +29,12 @@
                 <DataTemplate>
                     <StackLayout Padding="10"
                                >
-                        <Frame CornerRadius="10"
-                               Padding="0"
-                               BackgroundColor="#f7f7f7">
+                        
                             <Label FontSize="Medium" 
                                    Padding="10"
                                    BackgroundColor="#f7f7f7"
                                    Text="{Binding Name}"/>
-                        </Frame>
+                       
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -37,7 +43,9 @@
         
         <CollectionView Grid.Row="2"
                  x:Name="CvNews"
-                        Margin="5">
+                        Margin="5"
+                        SelectionMode="Single"
+                        SelectionChanged="CvNews_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
             </CollectionView.ItemsLayout>
@@ -46,7 +54,8 @@
                     <StackLayout Padding="10"
                                  BackgroundColor="#000">
                         <Image HeightRequest="200"
-                               Source="{Binding Image}"/>
+                               Source="{Binding Image}"
+                               />
                         <Label FontSize="Medium" 
                                Text= "{Binding Title}"
                                TextColor="White"/>
