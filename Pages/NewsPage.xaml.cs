@@ -7,7 +7,7 @@ using NewsApp.Services;
 
 public partial class NewPage1 : ContentPage
 {
-
+    private bool IsNextPage = false;
     public List<Article> ArticlesList { get; set; }
     public List<Category> CategoryList = new List<Category>
     {
@@ -33,7 +33,12 @@ public partial class NewPage1 : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await PassCategory("general");
+        if (IsNextPage = false)
+        {
+            await PassCategory("general");
+        }
+
+       
 
        
     }
@@ -62,7 +67,7 @@ public partial class NewPage1 : ContentPage
     private void CvNews_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
        var SelectedItem = e.CurrentSelection.FirstOrDefault() as Article;
-
+        IsNextPage = true;
         Navigation.PushAsync(new NewsDetailPage(SelectedItem));
     }
 }
