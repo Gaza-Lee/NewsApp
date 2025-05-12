@@ -9,37 +9,42 @@
         <Label Grid.Row="0"
                Text="News 24"
                FontSize="Title"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
+               FontAttributes="Bold"
                Margin="0"
-               Padding="152,0"
+               HorizontalTextAlignment="Center"
                BackgroundColor="DarkBlue"
                TextColor="White"/>
-        
-        
-        <CollectionView Grid.Row="1"
-                        x:Name="CvCategories"
-                        HeightRequest="60"
-                        SelectionMode="Single"
-                        SelectionChanged="CvCategories_SelectionChanged">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate >
-                <DataTemplate>
-                    <StackLayout Padding="10"
-                               >
-                        
+
+
+        <Border Grid.Row="1"
+                Margin="5,10"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 10">
+            <CollectionView 
+                BackgroundColor="Lavender"
+                 x:Name="CvCategories"
+                 SelectionMode="Single"
+                 SelectionChanged="CvCategories_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Border 
+                                StrokeShape="RoundRectangle 10"
+                            Margin="5"
+                            StrokeThickness="0">
                             <Label FontSize="Medium" 
-                                   Padding="10"
-                                   BackgroundColor="#f7f7f7"
+                                   BackgroundColor="#fff"
+                                  Padding="10,0"
+                                   HorizontalTextAlignment="Center"
                                    Text="{Binding Name}"
                                    TextColor="Black"/>
-                       
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
         
         
         <CollectionView Grid.Row="2"

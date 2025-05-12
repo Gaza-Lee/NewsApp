@@ -3,20 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Pages.NewsDetailPage"
              Title="News Detail"
+             BackgroundColor="Black"
              NavigationPage.HasNavigationBar="False">
 
-    <Grid RowDefinitions="auto, auto, auto"
-          Margin="0,50,0,0">
-
-        <Image Grid.Row="0"
-               x:Name="ImgNews"
-               HeightRequest="300"
-               Margin="0,30,0,0"
-               Aspect="Fill"/>
-
+    <Grid RowDefinitions="auto,auto, auto, auto">
+        
         <Label Text="x"
                x:Name="Close"
-               FontSize="20"
+               Grid.Row="0"
+               FontSize="40"
                HorizontalOptions="End"
                Margin="20,0"
                TextColor="Red"
@@ -26,17 +21,23 @@
             </Label.GestureRecognizers>
         </Label>
 
-        <Label Grid.Row="1"
-            x:Name="Lbltitle"
-               FontSize="Title"
-               Margin="5"
-               FontAttributes="Bold"
-               TextDecorations="Underline"/>
+        <Image Grid.Row="1"
+               x:Name="ImgNews"
+               HeightRequest="300"
+               Aspect="Fill"/>
 
         <Label Grid.Row="2"
+               TextColor="#fff"
+            x:Name="Lbltitle"
+               FontSize="Title"
+               Margin="10,5"
+               FontAttributes="Bold"/>
+
+        <Label Grid.Row="3"
+               TextColor="#fff"
                x:Name="LblContent"
-               Margin="3"
-               FontSize="Body"/>
+               Margin="10,0"
+               FontSize="14"/>
        
 
     </Grid>
